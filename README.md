@@ -66,15 +66,48 @@ If login succeeds, 2FA is active. You can close both terminals.
 
 ---
 
-## Recovery
+### Recovery (Reliable Method)
 
-If you get locked out, return to the original terminal window (which still has an active session) and run the backup restore command printed by the installer during setup. It will look like:
+If you get locked out due to 2FA, disable it by editing the PAM configuration:
+
+1. Open the file:
+
+   ```bash
+   sudo nano /etc/pam.d/common-auth
+   ```
+
+2. Locate this exact block at the top of the file:
+
+   ```
+   # --- 2FA module (installed by install_2fa.sh) ---
+   auth required pam_auth.so
+   # --- end 2FA module ---
+   ```
+
+3. Comment out ONLY the middle line:
+
+   ```
+   # --- 2FA module (installed by install_2fa.sh) ---
+   # auth required pam_auth.so
+   # --- end 2FA module ---
+   ```
+
+4. Save and exit.
+
+This immediately disables 2FA.
+
+To re-enable it, simply uncomment the same line.
+
+---
+
+### Alternative (Backup Restore)
 
 ```bash
-sudo cp /etc/pam.d/common-auth.backup.1234567890 /etc/pam.d/common-auth
+sudo cp /etc/pam.d/common-auth.backup.<timestamp> /etc/pam.d/common-auth
 ```
 
-This removes the 2FA requirement and restores your previous configuration immediately.
+Use this only if the backup file exists.
+
 
 ---
 
