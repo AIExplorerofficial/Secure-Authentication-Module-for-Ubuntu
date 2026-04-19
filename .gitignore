@@ -1,0 +1,31 @@
+# Compiled output
+*.o
+*.so
+*.a
+*.out
+
+# Executables (no extension)
+auth_test
+
+# Build directories
+build/
+dist/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secrets (never commit these)
+*.secret
+*.key
