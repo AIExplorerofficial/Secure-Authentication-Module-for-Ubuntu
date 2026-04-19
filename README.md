@@ -116,7 +116,7 @@ Use this only if the backup file exists.
 Every authentication attempt is recorded in a tamper-evident log. To check log integrity at any time, first build the test binary then run:
 
 ```bash
-make
+make test
 sudo ./auth_test --verify-log
 ```
 
