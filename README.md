@@ -113,9 +113,10 @@ Use this only if the backup file exists.
 
 ## Audit Log
 
-Every authentication attempt is recorded in a tamper-evident log. To check log integrity at any time:
+Every authentication attempt is recorded in a tamper-evident log. To check log integrity at any time, first build the test binary then run:
 
 ```bash
+make
 sudo ./auth_test --verify-log
 ```
 
